@@ -1,0 +1,29 @@
+{
+  "name": "shoesstacker-get-sneaks-shoes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "zipper": "rm -rf node_modules && npm ci && zip -r9 build/getSneaksShoes.zip .",
+    "push-to-s3": "aws s3 sync --acl private build/ s3://shoesstacker-lambda-code/lambdas",
+    "push-to-s3-codebuild": "aws s3 sync --acl private build/ s3://shoesstacker-lambda-code/lambdas",
+    "deploy": "npm run zipper && npm run push-to-s3",
+    "update-lambda": "aws --region us-east-1 lambda update-function-code --function-name sneaks-get-shoes --s3-bucket sneaks-get-shoes-lambda-code --s3-key lambdas/getSneaksShoes.zip --publish",
+    "update-lambda-local": "aws --region us-east-1 lambda update-function-code --function-name sneaks-get-shoes --s3-bucket sneaks-get-shoes-lambda-code --s3-key lambdas/getSneaksShoes.zip --publish",
+    "local-deploy": "npm run deploy && npm run update-lambda-local"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelrtobias/shoesstacker-get-sneaks-shoes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/michaelrtobias/shoesstacker-get-sneaks-shoes/issues"
+  },
+  "homepage": "https://github.com/michaelrtobias/shoesstacker-get-sneaks-shoes#readme",
+  "dependencies": {
+    "sneaks-api": "^1.2.3"
+  }
+}
