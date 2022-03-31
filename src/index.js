@@ -2,7 +2,8 @@ const getSneaks = require("./getSneaks.js");
 exports.handler = async (event) => {
   console.log("event:", event);
   let { body } = event;
-  body = JSON.parse(body);
+  console.log("typeof body:", typeof body);
+  body = typeof body === "string" ? JSON.parse(body) : body;
   try {
     const results = await getSneaks(body);
     let response = {
