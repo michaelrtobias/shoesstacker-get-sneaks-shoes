@@ -1,5 +1,6 @@
 const getSneaks = require("./getSneaks.js");
 exports.handler = async (event) => {
+  console.log("event:", event);
   let { body } = event;
   body = JSON.parse(body);
   try {
