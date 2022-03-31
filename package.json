@@ -9,8 +9,8 @@
     "push-to-s3": "aws s3 sync --acl private build/ s3://shoesstacker-lambda-code/lambdas",
     "push-to-s3-codebuild": "aws s3 sync --acl private build/ s3://shoesstacker-lambda-code/lambdas",
     "deploy": "npm run zipper && npm run push-to-s3",
-    "update-lambda": "aws --region us-east-1 lambda update-function-code --function-name sneaks-get-shoes --s3-bucket sneaks-get-shoes-lambda-code --s3-key lambdas/getSneaksShoes.zip --publish",
-    "update-lambda-local": "aws --region us-east-1 lambda update-function-code --function-name sneaks-get-shoes --s3-bucket sneaks-get-shoes-lambda-code --s3-key lambdas/getSneaksShoes.zip --publish",
+    "update-lambda": "aws --region us-east-1 lambda update-function-code --function-name sneaks-get-shoes --s3-bucket shoesstacker-lambda-code --s3-key lambdas/getSneaksShoes.zip --publish",
+    "update-lambda-local": "aws --region us-east-1 lambda update-function-code --function-name sneaks-get-shoes --s3-bucket shoesstacker-lambda-code --s3-key lambdas/getSneaksShoes.zip --publish",
     "local-deploy": "npm run deploy && npm run update-lambda-local"
   },
   "repository": {
